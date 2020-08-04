@@ -66,8 +66,8 @@ vagrant up
 ### 5. Laravel インストール
 ```bash
 vagrant ssh
-cd ~
-composer create-project laravel/laravel --prefer-dist code
+cd ~/code
+composer create-project laravel/laravel --prefer-dist .
 ```
 ### 6. アクセス
 http://ドメイン.local
