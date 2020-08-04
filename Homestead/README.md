@@ -72,6 +72,19 @@ composer create-project laravel/laravel --prefer-dist code
 ### 6. アクセス
 http://ドメイン.local
 
+### 7. アクセスできない場合
+方法1
+```bash
+vagrant provision
+```
+
+方法2
+```bash
+vagrant ssh
+sudo apachectl restart
+#もしくは
+sudo service apache2 start
+```
 ## DB 接続情報
 ### MySQL
 127.0.0.1:33060  
