@@ -35,7 +35,7 @@ http://[Docker Machine IP]:8080
 
 ## DB情報
 HostName : Docker Machine IP  
-Port : 33060
+Port : 33060  
 Root Name : root  
 Root Password : root  
 User Name : dev  
