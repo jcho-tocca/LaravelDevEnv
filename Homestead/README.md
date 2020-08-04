@@ -9,7 +9,7 @@ Vagrant
 VirtualBox 6.x
 
 ## 構築手順
-### 1. コメント実行
+### 1. コマンド実行
 ```bash
 mkdir project_folder
 cd project_folder
