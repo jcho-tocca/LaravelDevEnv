@@ -86,3 +86,9 @@ homestead / secret
 ## Mailhog
 127.0.0.1 or localhost:8025  
 指定ip or ドメイン:8025
+
+## 公式ドキュメント
+### 英語
+https://laravel.com/docs/7.x/homestead
+### 日本語
+https://readouble.com/laravel/7.x/ja/homestead.html
