@@ -5,7 +5,7 @@ Laravel 開発環境
 Homesteadを使ってローカル開発環境を構築する
 ## 必須事項
 
-Vagrant
+Vagrant  
 VirtualBox 6.x
 
 ## 構築手順
@@ -74,15 +74,15 @@ http://ドメイン.local
 
 ## DB 接続情報
 ### MySQL
-127.0.0.1:33060
-指定ip:3306
+127.0.0.1:33060  
+指定ip:3306  
 homestead / secret
 
 ### PostgreSQL
-127.0.0.1:54320
-指定ip :5432
+127.0.0.1:54320  
+指定ip :5432  
 homestead / secret
 
 ## Mailhog
-127.0.0.1 or localhost:8025
+127.0.0.1 or localhost:8025  
 指定ip or ドメイン:8025
