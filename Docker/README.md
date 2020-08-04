@@ -9,7 +9,7 @@ Dockerを使ってローカル開発環境を構築する
 VirtualBox 6.1  
 Docker Client 19.03.1  
 Docker Engine 19.03.5  
-Composer version 1.10.6
+Composer version 1.10.6  
 PHP:7.3.3-apache  
 MySQL 5.6   
 phpMyAdmin 4.7  
