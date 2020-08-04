@@ -85,6 +85,11 @@ sudo apachectl restart
 #もしくは
 sudo service apache2 start
 ```
+
+### 8. Homestead.yml に修正をした場合
+```bash
+vagrant reload --provision
+```
 ## DB 接続情報
 ### MySQL
 127.0.0.1:33060  
