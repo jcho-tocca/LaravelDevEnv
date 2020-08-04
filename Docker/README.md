@@ -13,6 +13,8 @@ Composer version 1.10.6
 PHP:7.3.3-apache  
 MySQL 5.6   
 phpMyAdmin 4.7  
+node:13.7  
+MailHog  
 
 # 構築手順
 ## 1. Dockerfile、docker-compose.ymlファイルダウンロード
@@ -35,7 +37,8 @@ composer create-project laravel/laravel --prefer-dist .
 mv public/ html/
 ```
 
-## composer、npm、artisan を実行したい場合
+## 5. composer、npm、artisan を実行したい場合
+### 例
 ```bash
 docker-compose run --rm composer update
 docker-compose run --rm npm run dev
@@ -59,10 +62,14 @@ User Name : dev
 User Password : dev  
 DB : development  
 
+## MailHog
+http://[Docker Machine IP]:8025
+
 # SSH接続
 ```bash
 docker-compose exec コンテナ名 bash
 ```
+
 # 設定ファイルパス
 ## Apache
 /etc/apache2/sites-available/000-default.conf
@@ -73,5 +80,6 @@ docker-compose exec コンテナ名 bash
 ```bash
 docker-compose up -d --build
 ```
+
 # PHPの拡張モジュールを追加
 Dockerfileを修正して対応
