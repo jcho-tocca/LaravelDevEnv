@@ -80,6 +80,11 @@ docker-compose exec コンテナ名 bash
 ```bash
 docker-compose up -d --build
 ```
-
+# PHP のバージョン切替
+Dockerfileの修正  
+```bash
+php:<version>-apache
+```
+公式ページ：https://hub.docker.com/_/php
 # PHPの拡張モジュールを追加
 Dockerfileを修正して対応
