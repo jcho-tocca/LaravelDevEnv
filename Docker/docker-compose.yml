@@ -1,4 +1,5 @@
 version: '3.3' 
+
 services: 
   web: 
     build: 
@@ -9,9 +10,9 @@ services:
       - db 
     volumes: 
       - ./www:/var/www/
-      # - ./php:/var/www/
     ports: 
       - 80:80 
+
   db: 
     container_name: mysql56
     image: mysql:5.6 
@@ -24,6 +25,7 @@ services:
       MYSQL_ROOT_PASSWORD: root 
     ports: 
       - 33060:3306
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:4.7
     depends_on:
@@ -34,3 +36,33 @@ services:
       - "PMA_HOST=db"
       - "PMA_USER=root"
       - "PMA_PASSWORD=root"
+
+  composer:
+    image: composer:latest
+    container_name: composer
+    volumes:
+      - ./www:/var/www
+    working_dir: /var/www
+    depends_on:
+      - web
+
+  npm:
+    image: node:13.7
+    container_name: npm
+    volumes:
+      - ./www:/var/www
+    working_dir: /var/www
+    entrypoint: ['npm']
+
+  artisan:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: artisan
+    volumes:
+      - ./www:/var/www
+    depends_on:
+      - db
+    working_dir: /var/www
+    entrypoint: ['php', '/var/www/artisan']
+    
