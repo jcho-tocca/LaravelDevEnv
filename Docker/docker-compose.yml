@@ -1,5 +1,8 @@
 version: '3.3' 
 
+volumes:
+  db-volume: # for windows
+
 services: 
   web: 
     build: 
@@ -24,6 +27,8 @@ services:
       MYSQL_USER: dev 
       MYSQL_PASSWORD: dev 
       MYSQL_ROOT_PASSWORD: root 
+    volumes:
+      - db-volume:/var/lib/mysql # for windows
     ports: 
       - 33060:3306
 
