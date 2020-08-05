@@ -49,6 +49,7 @@ docker-compose run --rm artisan migrate
 
 ## Apache
 http://[Docker Machine IP]/index.php
+https://[Docker Machine IP]/index.php
 
 ## phpMyAdmin
 http://[Docker Machine IP]:8080

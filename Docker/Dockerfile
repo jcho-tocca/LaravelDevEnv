@@ -1,5 +1,12 @@
 FROM php:7.3.3-apache 
-RUN apt-get update && apt-get upgrade -y 
+RUN apt-get update && apt-get install -y \
+    libssl-dev \
+    openssl \
+    ssl-cert \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && a2enmod ssl \
+    && a2ensite default-ssl
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN pecl install xdebug-2.9.6 \
     && docker-php-ext-enable xdebug
