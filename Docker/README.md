@@ -89,3 +89,12 @@ php:<version>-apache
 公式ページ：https://hub.docker.com/_/php
 # PHPの拡張モジュールを追加
 Dockerfileを修正して対応
+
+# トラブルシューティング
+
+下記のエラー発生時(apt-get update時)、ローカルのDNSサーバーのアドレスを  
+Public Domain(1.1.1.1 or 8.8.8.8など)にすると解決する場合がある
+
+```bash
+Err:1 http://security.debian.org/debian-security .......
+```
