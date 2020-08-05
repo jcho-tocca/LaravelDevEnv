@@ -27,6 +27,7 @@ services:
       MYSQL_USER: dev 
       MYSQL_PASSWORD: dev 
       MYSQL_ROOT_PASSWORD: root 
+      TZ: Asia/Tokyo 
     volumes:
       - db-volume:/var/lib/mysql # for windows
     ports: 
