@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
     ssl-cert \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && a2enmod ssl \
+    && a2enmod ssl rewrite \
     && a2ensite default-ssl
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN pecl install xdebug-2.9.6 \
