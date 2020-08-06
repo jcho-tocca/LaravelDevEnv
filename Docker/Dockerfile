@@ -14,5 +14,6 @@ RUN curl -sSL https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhs
     && chmod +x mhsendmail \
     && mv mhsendmail /usr/local/bin/mhsendmail
 COPY ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf 
+COPY ./apache/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 COPY ./php/php.ini /usr/local/etc/php/php.ini
 EXPOSE 80

@@ -21,8 +21,9 @@ MailHog
 ```bash
 git svn clone https://github.com/jcho-tocca/LaravelDevEnv/trunk/Docker project_name
 ```
-## 2. httpd.conf 修正
+## 2. httpd.conf、ssl.conf 修正
 apache/000-default.conf  
+default-ssl.conf  
 環境に合わせて内容を修正してください。
 ## 3. php.ini 修正
 php/php.ini  
@@ -31,10 +32,7 @@ php/php.ini
 ```bash
 cd project_name
 docker-compose up -d --build
-cd www
-rm html
-composer create-project laravel/laravel --prefer-dist .
-mv public/ html/
+docker-compose run --rm composer create-project laravel/laravel .
 ```
 
 ## 5. composer、npm、artisan を実行したい場合

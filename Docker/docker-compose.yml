@@ -12,7 +12,7 @@ services:
     depends_on: 
       - db 
     volumes: 
-      - ./www:/var/www/
+      - ./html:/var/www/html/
     ports: 
       - 80:80 
       - 443:443
@@ -56,8 +56,8 @@ services:
     image: composer:latest
     container_name: composer
     volumes:
-      - ./www:/var/www
-    working_dir: /var/www
+      - ./html:/var/www/html
+    working_dir: /var/www/html
     depends_on:
       - web
 
@@ -65,8 +65,8 @@ services:
     image: node:13.7
     container_name: npm
     volumes:
-      - ./www:/var/www
-    working_dir: /var/www
+      - ./html:/var/www/html
+    working_dir: /var/www/html
     entrypoint: ['npm']
 
   artisan:
@@ -75,9 +75,9 @@ services:
       dockerfile: Dockerfile
     container_name: artisan
     volumes:
-      - ./www:/var/www
+      - ./html:/var/www/html
     depends_on:
       - db
-    working_dir: /var/www
-    entrypoint: ['php', '/var/www/artisan']
+    working_dir: /var/www/html
+    entrypoint: ['php', '/var/www/html/artisan']
     
