@@ -32,7 +32,7 @@ php/php.ini
 ```bash
 cd project_name
 docker-compose up -d --build
-docker-compose run --rm composer create-project laravel/laravel .
+docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
 ```
 
 ## 5. composer、npm、artisan を実行したい場合
@@ -42,6 +42,14 @@ docker-compose run --rm composer update
 docker-compose run --rm npm run dev
 docker-compose run --rm artisan migrate 
 ```
+### 注意
+windows使用者は docker-compose run --rm npm はエラーが発生しますのでご使用にならずにクライアント環境	にnpmをインストールしてご使用ください。  
+windows環境ではDocker volume mount 下記の問題があります。 
+
+・volume mount によって空になる問題  
+・Linuxのシンボールリンクの作成ができない問題  
+
+参考ページ：https://castaneai.hatenablog.com/entry/2019/01/29/151257
 
 # 確認
 
