@@ -43,8 +43,9 @@ docker-compose run --rm npm run dev
 docker-compose run --rm artisan migrate 
 ```
 ### 注意
-windows使用者は docker-compose run --rm npm はエラーが発生しますのでご使用にならずにクライアント環境	にnpmをインストールしてご使用ください。  
-windows環境ではDocker volume mount 下記の問題があります。 
+windows使用者は docker-compose run --rm npm はエラーが発生しますのでご使用にならずにクライアント環境	にnpmをインストールしてご使用ください。
+
+windows環境ではDocker volume mount の問題があります。 
 
 ・volume mount によって空になる問題  
 ・Linuxのシンボールリンクの作成ができない問題  
