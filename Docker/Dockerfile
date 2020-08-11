@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* \
     && a2enmod ssl rewrite \
     && a2ensite default-ssl
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql bcmath ctype fileinfo json mbstring tokenizer
 RUN pecl install xdebug-2.9.6 \
     && docker-php-ext-enable xdebug
 RUN curl -sSL https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64 -o mhsendmail \
