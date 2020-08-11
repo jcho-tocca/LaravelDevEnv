@@ -119,10 +119,11 @@ vscode - launch.json
 "request": "launch",
 "port": 9000,
 "pathMappings": {
-	# コンテナ上のDocument Root : ローカルのDocument Root
-	"/var/www/html/public":"C:\\LaravelDevEnv\\Docker\\html\\public" # ご自分の環境に合わせてください。
+	"/var/www/html/public":"C:\\LaravelDevEnv\\Docker\\html\\public"
 }
 ```
+pathMappingsの形式をご自分の環境に合わせてください。  
+コンテナ上のDocument Root : ローカルのDocument Root
 # トラブルシューティング
 
 下記のエラー発生時(apt-get update時)、ローカルのDNSサーバーのアドレスを  
