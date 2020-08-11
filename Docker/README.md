@@ -99,7 +99,30 @@ php:<version>-apache
 公式ページ：https://hub.docker.com/_/php
 # PHPの拡張モジュールを追加
 Dockerfileを修正して対応
-
+# XDebug 設定
+php.ini  
+```bash
+[XDebug]
+xdebug.remote_enable = 1
+xdebug.remote_autostart = 1
+xdebug.remote_connect_back = 0
+xdebug.remote_host = [VirtualBox Host-Only Ethernet Adapter IP]
+xdebug.remote_port = 9000
+xdebug.var_display_max_children = -1
+xdebug.var_display_max_data = -1
+xdebug.var_display_max_depth = -1
+```
+vscode - launch.json  
+```json
+"name": "Listen for XDebug",
+"type": "php",
+"request": "launch",
+"port": 9000,
+"pathMappings": {
+	// コンテナ上のDocument Root : ローカルのDocument Root
+	"/var/www/html/public":"C:\\LaravelDevEnv\\Docker\\html\\public" // ご自分の環境に合わせてください。
+}
+```
 # トラブルシューティング
 
 下記のエラー発生時(apt-get update時)、ローカルのDNSサーバーのアドレスを  
