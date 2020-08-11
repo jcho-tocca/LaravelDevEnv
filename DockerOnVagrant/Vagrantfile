@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-16.04"
+
+  # ローカルへのポート3000アクセスをvmのポート3000に転送（Web開発で必要な場合）
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
+
+  # Windowsローカル環境から、192.168.33.10で接続
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "DockerOnVagrant"
+    vb.gui = true
+    vb.memory = "2048" # メモリは2GB
+
+    vb.customize [
+      "modifyvm", :id,
+      "--vram", "256", # ビデオメモリ確保（フルスクリーンモードにするため）
+      "--clipboard", "bidirectional", # クリップボードの共有
+      "--draganddrop", "bidirectional", # ドラッグアンドドロップ可能に
+      "--cpus", "2", # CPUは2つ
+      "--ioapic", "on" # I/O APICを有効化
+    ]
+  end
+end
