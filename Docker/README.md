@@ -119,8 +119,8 @@ vscode - launch.json
 "request": "launch",
 "port": 9000,
 "pathMappings": {
-	// コンテナ上のDocument Root : ローカルのDocument Root
-	"/var/www/html/public":"C:\\LaravelDevEnv\\Docker\\html\\public" // ご自分の環境に合わせてください。
+	# コンテナ上のDocument Root : ローカルのDocument Root
+	"/var/www/html/public":"C:\\LaravelDevEnv\\Docker\\html\\public" # ご自分の環境に合わせてください。
 }
 ```
 # トラブルシューティング
