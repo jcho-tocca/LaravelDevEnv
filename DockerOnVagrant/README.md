@@ -114,7 +114,8 @@ sudo apt-get install git
 ## 8. Laravel 開発環境
 下記の手順で進めてください。  
 
-https://github.com/jcho-tocca/LaravelDevEnv/tree/master/Docker#%E6%A7%8B%E7%AF%89%E6%89%8B%E9%A0%86
+[Laravel 開発環境構築](https://github.com/jcho-tocca/LaravelDevEnv/tree/master/Docker#%E6%A7%8B%E7%AF%89%E6%89%8B%E9%A0%86)
+
 
 ## 9. ubuntu-desktopにログイン
 id : vagrant  

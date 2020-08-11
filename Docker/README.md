@@ -50,7 +50,10 @@ windows環境ではDocker volume mount の問題があります。
 ・volume mount によって空になる問題  
 ・Linuxのシンボールリンクの作成ができない問題  
 
-参考ページ：https://castaneai.hatenablog.com/entry/2019/01/29/151257
+参考ページ：https://castaneai.hatenablog.com/entry/2019/01/29/151257  
+
+重くはなりますがwindows 環境で仮想環境を用意すれば回避できると思います。  
+[こちらへ](https://github.com/jcho-tocca/LaravelDevEnv/tree/master/DockerOnVagrant)
 
 # 確認
 
