@@ -124,12 +124,17 @@ pw : vagrant
 
 # トラブルシューティング
 
-## ※virtualbox - メモリがreadになることはできませんでした  
+## ■ virtualbox - メモリがreadになることはできませんでした  
 設定 -> ディスプレイ -> スクリーンタブ -> グラフィックコントローラー -> VBoxSVGA に変更して再起動  
-## ※composer - proc_open(): fork failed - Out of memory
+## ■ composer - proc_open(): fork failed - Out of memory
 「スワップファイル」を作って回避する  
 ```bash
 sudo -s /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
 sudo -s /sbin/mkswap /var/swap.1
 sudo -s /sbin/swapon /var/swap.1
+```
+## ■ アクセス時 - The stream or file "/var/www/html/storage/logs/laravel.log"
+```bash
+docker-compose exec web bash
+chown www-data storage/ -R
 ```
