@@ -5,6 +5,7 @@ Laravel 開発環境
 Homesteadを使ってローカル開発環境を構築する
 ## 必須事項
 
+Composer
 Vagrant  
 VirtualBox 6.x
 
@@ -31,7 +32,7 @@ keys:
     - ~/.ssh/id_rsa
 folders:
     -
-        map: 'ローカルプロジェクトディレクトリパス'
+        map: 'project_folder/code'
         to: /home/vagrant/code
 sites:
     -
@@ -55,24 +56,37 @@ features:
 name: vm名
 hostname: ホストネーム
 ```
-### 3. hosts ファイル修正
+### 3. after.sh 追記( phpMyAdmin インスール )
+```
+if [ -d /home/vagrant/phpmyadmin ]; then
+    sudo echo '--- phpMyAdmin already installed. --- '
+else
+    sudo wget -k https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
+    sudo tar -xzf phpMyAdmin-5.0.2-all-languages.tar.gz -C /home/vagrant/
+    sudo rm phpMyAdmin-5.0.2-all-languages.tar.gz
+    sudo mv /home/vagrant/phpMyAdmin-5.0.2-all-languages/ /home/vagrant/code/public/phpMyAdmin/
+    sudo echo '--- phpMyAdmin 4.8.1 install complete ---'
+fi
+```
+### 4. hosts ファイル修正
 ```bash
 指定ip  ドメイン.local
 ```
-### 4. vagrant 実行
+### 5. vagrant 実行
 ```bash
 vagrant up
 ```
-### 5. Laravel インストール
+### 6. Laravel インストール
 ```bash
 vagrant ssh
 cd ~/code
 composer create-project laravel/laravel --prefer-dist .
 ```
-### 6. アクセス
+### 7. アクセス
 http://ドメイン.local
+http://ドメイン.local/phpmyadmin
 
-### 7. アクセスできない場合
+### 8. アクセスできない場合
 方法1
 ```bash
 vagrant provision
@@ -86,7 +100,7 @@ sudo apachectl restart
 sudo service apache2 start
 ```
 
-### 8. Homestead.yml に修正をした場合
+### 9. Homestead.yml に修正をした場合
 ```bash
 vagrant reload --provision
 ```
