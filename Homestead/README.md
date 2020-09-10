@@ -83,7 +83,7 @@ cd ~/code
 composer create-project laravel/laravel --prefer-dist .
 ```
 ### 7. アクセス
-http://ドメイン.local
+http://ドメイン.local  
 http://ドメイン.local/phpmyadmin
 
 ### 8. アクセスできない場合
