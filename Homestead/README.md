@@ -59,13 +59,13 @@ hostname: ホストネーム
 ```
 ### 3. after.sh 追記( phpMyAdmin インスール )
 ```
-if [ -d /home/vagrant/phpmyadmin ]; then
+if [ -d /home/vagrant/code/public/phpmyadmin ]; then
     sudo echo '--- phpMyAdmin already installed. --- '
 else
     sudo wget -k https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
     sudo tar -xzf phpMyAdmin-5.0.2-all-languages.tar.gz -C /home/vagrant/
     sudo rm phpMyAdmin-5.0.2-all-languages.tar.gz
-    sudo mv /home/vagrant/phpMyAdmin-5.0.2-all-languages/ /home/vagrant/code/public/phpMyAdmin/
+    sudo mv /home/vagrant/phpMyAdmin-5.0.2-all-languages/ /home/vagrant/code/public/phpmyadmin/
     sudo echo '--- phpMyAdmin 4.8.1 install complete ---'
 fi
 ```
