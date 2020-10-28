@@ -27,6 +27,7 @@ ip: 指定ip
 memory: 2048
 cpus: 2
 provider: virtualbox
+ssl: true
 authorize: ~/.ssh/id_rsa.pub
 keys:
     - ~/.ssh/id_rsa
@@ -99,8 +100,38 @@ sudo apachectl restart
 #もしくは
 sudo service apache2 start
 ```
+### 9. SSL対応(apache使用時)
+```
+vagrant ssh
+cp /etc/ssl/certs/ca.homestead.[ホストネーム].crt /home/vagrant/code
+```
+エクスプローラを開きca.homestead.[ホストネーム].crtをクリックすると、証明書が開きます。  
+![1](https://user-images.githubusercontent.com/64624465/97399694-069d5c00-1931-11eb-92b2-48dbdf3f9c61.png)
 
-### 9. Homestead.yml に修正をした場合
+[証明書をインストール]をクリックします。  
+![2](https://user-images.githubusercontent.com/64624465/97399698-0735f280-1931-11eb-9633-3ade2ff5d1fb.png)
+
+[証明書のインポートウィザード]が開きます。[現在のユーザ]を選択して[次へ]  
+![3](https://user-images.githubusercontent.com/64624465/97399700-07ce8900-1931-11eb-8ea5-824fbed06593.png)
+
+[証明書ストア]のページは、[証明書をすべて次のストアに配置する]を選択肢、[参照]をクリックして[証明書ストアの選択]を開きます。  
+![4](https://user-images.githubusercontent.com/64624465/97399703-07ce8900-1931-11eb-875c-18e0e3728604.png)
+
+[信頼されたルート証明機関]を選択して[OK]をクリックします。ダイアログが閉じたら[次へ]をクリック  
+![5](https://user-images.githubusercontent.com/64624465/97399704-08671f80-1931-11eb-9ab3-81d3053349d2.png)
+
+[完了]をクリック  
+![6](https://user-images.githubusercontent.com/64624465/97399706-08671f80-1931-11eb-97f5-89553bc51059.png)
+
+[セキュリティの警告]が表示されるので、[はい]をクリック  
+![7](https://user-images.githubusercontent.com/64624465/97399708-08ffb600-1931-11eb-9b05-55721be09175.png)
+
+完了したら、証明書は削除しておきます  
+```bash
+rm ~/code/ca.homestead.[ホストネーム].crt
+```
+
+### 10. Homestead.yml に修正をした場合
 ```bash
 vagrant reload --provision
 ```
