@@ -4,16 +4,15 @@ Laravel 開発環境
 ## 概要
 Homesteadを使ってローカル開発環境を構築する
 ## 必須事項
-
-Composer
+Windows10  
+Composer  
 Vagrant  
-VirtualBox 6.x
-
+VirtualBox 6.x  
 ## 構築手順
 ### 1. コマンド実行
 ```bash
-mkdir project_folder
-cd project_folder
+mkdir プロジェクトフォルダ
+cd プロジェクトフォルダ
 composer require laravel/homestead --dev
 vendor\\bin\\homestead make
 cd ~/.ssh
@@ -23,7 +22,7 @@ ssh-keygen -t rsa
 ```
 ### 2. Homestead.yml
 ```yaml
-ip: 指定ip
+ip: 指定IP
 memory: 2048
 cpus: 2
 provider: virtualbox
@@ -33,7 +32,7 @@ keys:
     - ~/.ssh/id_rsa
 folders:
     -
-        map: 'project_folder/code'
+        map: 'C:\プロジェクトフォルダ\code'
         to: /home/vagrant/code
 sites:
     -
@@ -71,7 +70,7 @@ fi
 ```
 ### 4. hosts ファイル修正
 ```bash
-指定ip  ドメイン.local
+指定IP  ドメイン.local
 ```
 ### 5. vagrant 実行
 ```bash
@@ -130,25 +129,93 @@ cp /etc/ssl/certs/ca.homestead.[ホストネーム].crt /home/vagrant/code
 ```bash
 rm ~/code/ca.homestead.[ホストネーム].crt
 ```
-
-### 10. Homestead.yml に修正をした場合
+### 11. Visual Studio Code + Xdebug環境構築
+```bash
+vagrant ssh
+sudo vi /etc/php/7.4/fpm/conf.d/20-xdebug.ini
+```
+下記を追記
+```bash
+zend_extension=xdebug.so
+xdebug.remote_enable = 1
+xdebug.remote_autostart = 1
+xdebug.remote_connect_back = 1
+xdebug.remote_port = 9000
+xdebug.max_nesting_level = -1
+```
+サーバ再起動
+```bash
+vagrant reload
+```
+vscodeのlaunch.json修正
+```json
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Listen for XDebug",
+			"type": "php",
+			"request": "launch",
+			"port": 9000,
+			"pathMappings": {
+				"/home/vagrant/code": "C:\\プロジェクトフォルダ\\code"
+            }
+		},
+		{
+			"name": "Launch currently open script",
+			"type": "php",
+			"request": "launch",
+			"program": "${file}",
+			"cwd": "${fileDirname}",
+			"port": 9000
+		}
+	]
+}
+```
+### 11. Homestead.yml に修正をした場合
 ```bash
 vagrant reload --provision
 ```
 ## DB 接続情報
 ### MySQL
-127.0.0.1:33060  
-指定ip:3306  
-homestead / secret
+ホスト：127.0.0.1  
+ポート：33060  
+もしくは  
+ホスト：指定IP  
+ポート：3306  
+ユーザー名：homestead  
+パスワード：secret
 
 ### PostgreSQL
-127.0.0.1:54320  
-指定ip :5432  
-homestead / secret
+ホスト：127.0.0.1  
+ポート：54320  
+もしくは  
+ホスト：指定IP  
+ポート：5432  
+ユーザー名：homestead  
+パスワード：secret
 
 ## Mailhog
-127.0.0.1 or localhost:8025  
-指定ip or ドメイン:8025
+SMTP情報  
+ホスト：localhost  
+ポート：1025  
+.env設定
+```bash
+MAIL_MAILER=smtp
+MAIL_HOST=localhost
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+```
+ブラウザで確認  
+http://127.0.0.1:8025  
+http://localhost:8025  
+http://指定IP:8025  
+http://ドメイン:8025  
 
 ## 公式ドキュメント
 ### 英語
